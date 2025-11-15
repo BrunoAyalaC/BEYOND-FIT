@@ -14,6 +14,7 @@ import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
 import CheckoutPage from './components/CheckoutPage';
 import OrderConfirmationPage from './components/OrderConfirmationPage';
+import BrandsCarousel from './components/BrandsCarousel';
 
 type Page = 'home' | 'auth' | 'about' | 'contact' | 'checkout' | 'confirmation';
 
@@ -95,6 +96,7 @@ const App: React.FC = () => {
             <Hero />
             <FeaturedProducts onProductClick={handleProductClick} />
             <AllProducts onProductClick={handleProductClick} />
+            <BrandsCarousel />
             <CtaSection />
           </>
         );

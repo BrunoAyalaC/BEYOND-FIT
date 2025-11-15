@@ -4,6 +4,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 1,
     name: 'Polo de Rendimiento Stealth',
+    brand: 'Apex Performance',
     category: 'Ropa',
     price: 49.99,
     imageUrl: 'https://picsum.photos/seed/stealthtee/500/600?grayscale',
@@ -12,6 +13,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 2,
     name: 'Shorts de Compresión Kinetic',
+    brand: 'Kinetic Wear',
     category: 'Ropa',
     price: 59.99,
     imageUrl: 'https://picsum.photos/seed/kineticshorts/500/600?grayscale',
@@ -20,6 +22,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 3,
     name: 'Tomatodo Hydro-Flow 1L',
+    brand: 'HydroFlow',
     category: 'Accesorios',
     price: 24.99,
     imageUrl: 'https://picsum.photos/seed/hydroflow/500/600?grayscale',
@@ -28,6 +31,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 4,
     name: 'Joggers de Resistencia Endurance',
+    brand: 'Endurance Gear',
     category: 'Ropa',
     price: 89.99,
     imageUrl: 'https://picsum.photos/seed/endurancejog/500/600?grayscale',
@@ -36,6 +40,7 @@ export const PRODUCTS: Product[] = [
     {
     id: 5,
     name: 'Polera con Capucha Momentum',
+    brand: 'Apex Performance',
     category: 'Ropa',
     price: 99.99,
     imageUrl: 'https://picsum.photos/seed/momentumhoodie/500/600?grayscale',
@@ -44,6 +49,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 6,
     name: 'Guantes de Entrenamiento Apex',
+    brand: 'Endurance Gear',
     category: 'Accesorios',
     price: 34.99,
     imageUrl: 'https://picsum.photos/seed/apexgloves/500/600?grayscale',
@@ -52,6 +58,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 7,
     name: 'Top Deportivo Velocity',
+    brand: 'Kinetic Wear',
     category: 'Ropa',
     price: 54.99,
     imageUrl: 'https://picsum.photos/seed/velocitybra/500/600?grayscale',
@@ -60,6 +67,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 8,
     name: 'Gorra de Rendimiento Beyond',
+    brand: 'HydroFlow',
     category: 'Accesorios',
     price: 29.99,
     imageUrl: 'https://picsum.photos/seed/beyondcap/500/600?grayscale',

@@ -8,6 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .mask-image-horizontal {
+        -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+        mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+      }
+    </style>
     <script>
       tailwind.config = {
         theme: {
@@ -24,6 +33,7 @@
               'fade-in': 'fadeIn 0.5s ease-out forwards',
               'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
               'glow': 'glow 2s infinite ease-in-out alternate',
+              'scroll': 'scroll 40s linear infinite',
             },
             keyframes: {
               fadeIn: {
@@ -37,7 +47,11 @@
               glow: {
                 '0%': { 'box-shadow': '0 0 5px #00f6ff, 0 0 10px #00f6ff, 0 0 15px #00f6ff' },
                 '100%': { 'box-shadow': '0 0 20px #00f6ff, 0 0 30px #00f6ff, 0 0 40px #00f6ff' },
-              }
+              },
+              scroll: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-100%)' },
+              },
             }
           }
         }

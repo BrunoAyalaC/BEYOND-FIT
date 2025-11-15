@@ -34,7 +34,8 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose, onAddToCa
 
         <div className="flex flex-col">
           <h2 className="text-4xl font-bebas text-white tracking-wider">{product.name}</h2>
-          <p className="text-brand-cyan font-semibold mt-1">{product.category}</p>
+          <p className="text-lg font-semibold text-gray-400 mt-1 uppercase tracking-widest">{product.brand}</p>
+          <p className="text-brand-cyan font-semibold mt-2">{product.category}</p>
           <p className="text-3xl font-bold text-white mt-4">S/ {product.price.toFixed(2)}</p>
           <div className="w-16 h-0.5 bg-gray-700 my-6"></div>
           <p className="text-gray-300 flex-grow">{product.description}</p>

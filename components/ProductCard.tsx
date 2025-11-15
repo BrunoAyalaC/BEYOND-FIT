@@ -9,7 +9,7 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, onProductClick }) => {
   return (
     <div 
-      className="group relative border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:border-brand-cyan hover:shadow-2xl hover:shadow-brand-cyan/20 transform hover:-translate-y-2 cursor-pointer"
+      className="group relative border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:border-brand-cyan hover:shadow-2xl hover:shadow-brand-cyan/20 transform hover:-translate-y-2 cursor-pointer bg-black"
       onClick={() => onProductClick(product)}
     >
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/80 via-transparent to-black/20 z-10"></div>
@@ -19,8 +19,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onProductClick }) =>
         className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
       />
       <div className="absolute bottom-0 left-0 p-4 z-20 w-full">
+        <p className="text-xs font-semibold text-brand-cyan uppercase tracking-wider">{product.brand}</p>
         <h3 className="text-lg font-bold text-white tracking-wide truncate">{product.name}</h3>
-        <p className="text-gray-400 text-sm">{product.category}</p>
       </div>
       <div className="absolute top-4 right-4 z-20 bg-brand-bg/80 text-brand-cyan px-3 py-1 rounded-full text-sm font-semibold">
         S/ {product.price.toFixed(2)}

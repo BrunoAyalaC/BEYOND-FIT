@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CartItem } from '../types';
 
 interface CheckoutPageProps {
@@ -8,6 +8,8 @@ interface CheckoutPageProps {
 }
 
 const CheckoutPage: React.FC<CheckoutPageProps> = ({ cartItems, onPlaceOrder, onNavigate }) => {
+  const [createAccount, setCreateAccount] = useState(false);
+
   if (cartItems.length === 0) {
     return (
       <div className="min-h-[calc(100vh-10rem)] flex flex-col items-center justify-center text-center py-12 px-4 animate-fade-in">
@@ -27,31 +29,61 @@ const CheckoutPage: React.FC<CheckoutPageProps> = ({ cartItems, onPlaceOrder, on
   const shippingCost = 15.00; // Costo de envío fijo
   const total = subtotal + shippingCost;
 
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onPlaceOrder();
+  };
+
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 animate-fade-in">
       <h1 className="text-center text-5xl font-bebas tracking-wider text-white mb-12">Finalizar Compra</h1>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
         {/* Formulario de Información */}
         <div className="lg:col-span-2 bg-black p-8 rounded-lg border border-gray-800">
-          <h2 className="text-3xl font-bebas tracking-wider text-white mb-6">Información de Envío</h2>
-          <form className="space-y-4">
-            <input type="email" placeholder="Correo Electrónico" className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
+          <form className="space-y-4" onSubmit={handleFormSubmit}>
+            <h2 className="text-3xl font-bebas tracking-wider text-white mb-2">Información de Contacto y Envío</h2>
+            <input type="email" placeholder="Correo Electrónico" required className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input type="text" placeholder="Nombres" className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
-              <input type="text" placeholder="Apellidos" className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
+              <input type="text" placeholder="Nombres" required className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
+              <input type="text" placeholder="Apellidos" required className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
             </div>
-            <input type="text" placeholder="Dirección" className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
+            <input type="text" placeholder="Dirección" required className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <input type="text" placeholder="Ciudad" className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
-              <input type="text" placeholder="Región" className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
+              <input type="text" placeholder="Ciudad" required className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
+              <input type="text" placeholder="Región" required className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
               <input type="text" placeholder="Código Postal" className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
             </div>
-            <h2 className="text-3xl font-bebas tracking-wider text-white pt-8 mb-6">Información de Pago</h2>
-            <input type="text" placeholder="Número de Tarjeta" className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <input type="text" placeholder="MM/YY" className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
-              <input type="text" placeholder="CVC" className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
+
+            <div className="pt-4">
+              <label className="flex items-center space-x-3 cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  checked={createAccount}
+                  onChange={() => setCreateAccount(!createAccount)}
+                  className="h-5 w-5 bg-gray-900 border-gray-700 text-brand-cyan rounded focus:ring-2 focus:ring-brand-cyan focus:ring-offset-brand-bg focus:outline-none"
+                />
+                <span className="text-gray-300">Crear una cuenta para futuras compras</span>
+              </label>
             </div>
+
+            {createAccount && (
+              <div className="animate-fade-in pt-2">
+                 <input 
+                  type="password" 
+                  placeholder="Crear una contraseña" 
+                  required={createAccount}
+                  className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" 
+                />
+              </div>
+            )}
+            
+            <h2 className="text-3xl font-bebas tracking-wider text-white pt-8 mb-2">Información de Pago</h2>
+            <input type="text" placeholder="Número de Tarjeta" required className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input type="text" placeholder="MM/YY" required className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
+              <input type="text" placeholder="CVC" required className="w-full bg-gray-900 border border-gray-700 text-white px-4 py-3 rounded-sm focus:ring-2 focus:ring-brand-cyan focus:outline-none transition-all" />
+            </div>
+            {/* The submit button is in the other column */}
           </form>
         </div>
         
